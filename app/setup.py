@@ -10,41 +10,39 @@ CREATE SCHEMA public;"""
 cur.execute(sql)
 
 sql ="""
-CREATE TABLE posts 
-           (id serial PRIMARY KEY, titulo varchar(40), resumen varchar, texto text, creado timestamp);
+CREATE TABLE camionero 
+           (rut interger ,id serial PRIMARY KEY, nombre varchar(100), contacto interger, salario interger,
+           domicilio varchar(100), tipo_licencia varchar(10));
 """
 
 cur.execute(sql)
 
 
 sql ="""
-CREATE TABLE categorias 
-           (id serial PRIMARY KEY, nombre varchar(40), creado timestamp);
+CREATE TABLE camion 
+           (id_camion serial PRIMARY KEY, matricula varchar(40), idcamionero interger, modelo varchar(40), 
+           tipo varchar(40), Capacidad interger, cap_especiales varchar(250), id_paquete interger);
+"""
+
+
+cur.execute(sql)
+
+sql ="""
+CREATE TABLE paquete
+           (id_paquete serial PRIMARY KEY, tamaño interger, descripcion text, destinatario, text, codigo_postal interger,
+           f_envio timestamp, direccion_destino varchar(100), necesidades_esp varchar(250), id_camion interger);
 """
 
 cur.execute(sql)
 
 sql ="""
-CREATE TABLE categorias_posts 
-           (categoria_id integer, post_id integer);
+CREATE TABLE ciudad
+           (codigo_ciudad serial PRIMARY KEY, nombre varchar(100), codigo_postal interger, f_llegada timestamp);
 """
 
 cur.execute(sql)
 
-sql ="""
-CREATE TABLE  usuarios
-           (id serial PRIMARY KEY,rol integer, nombre varchar(40),apellido varchar(40),
-           email varchar(100),passwd varchar(255), creado timestamp);
-"""
 
-cur.execute(sql)
-
-sql ="""
-CREATE TABLE comentarios
-           (id serial PRIMARY KEY, comentario varchar(140), post_id integer, usuario_id integer, creado timestamp);
-"""
-
-cur.execute(sql)
 
 
 conn.commit()
