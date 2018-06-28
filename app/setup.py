@@ -11,7 +11,7 @@ cur.execute(sql)
 
 sql ="""
 CREATE TABLE camionero 
-           (rut interger ,id serial PRIMARY KEY, nombre varchar(100), contacto interger, salario interger,
+           (id serial PRIMARY KEY, rut interger , nombre varchar(100), contacto interger, salario interger,
            domicilio varchar(100), tipo_licencia varchar(10));
 """
 
